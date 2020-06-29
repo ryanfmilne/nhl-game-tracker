@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Index Page{% endblock %}
+
+
+
+{% block content %}
+
+<p class="welcome">Welcome to the EA NHL Score tracker! Please Login</p>
+
+<form>
+  <input class="login login-user" name="loginbox" onfocus="if (this.value=='username') this.value = ''" type="text" value="username">
+  <input class="login login-pass" name="loginbox" onfocus="if (this.value=='password') this.value = ''" type="password" value="password">
+  
+</form>
+
+<a href="/tracker"><button class="btn-login" type="submit" form="form1" value="Submit">Login</button></a>
+
+{% endblock %}
+
+

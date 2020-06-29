@@ -1,0 +1,220 @@
+body {
+    background-color: #1c3d59;
+    font-family: 'Bebas Neue', cursive;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+}
+
+
+#content {
+    text-align: center;
+}
+
+.logo {
+    width: 50%;
+    padding: 20px;
+}
+
+/* .ticker p {
+    background-color: #0b1824;
+    color: #d2ff00;
+    margin: 0;
+    padding: 12px;
+} */
+
+.btn {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    font-family: inherit;
+    color: #c4ddf2;
+    border: none;
+    font-size: 2em;
+    padding: 20px;
+}
+
+.btn-blue {
+    background-color: #4d6f8c;
+}
+
+.btn-orange {
+    background-color: #a45a1e;
+    margin-top: 6px;
+}
+
+
+.game {
+    color: #4d6f8c;
+}
+
+.recent-games-label {
+    margin: 0;
+    margin-top: 20px;
+    margin-bottom: -6px;
+    color: #4d6f8c;
+}
+
+.game-date {
+    font-size: 1.4em;
+    border-bottom: 1px solid #4d6f8c;
+    border-top: 1px solid #4d6f8c;
+    margin: 0;
+    margin-top: 20px;
+}
+
+
+table {
+    width: 100%;
+}
+
+#trackModal {
+    display: none;
+    position: absolute;
+    padding:0;
+    margin:0;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.81);
+}
+
+button#trackClose {
+    position: fixed;
+    width: 500px;
+    height: 80px;
+    /* top: 50%; */
+    /* left: 50%; */
+    margin-top: -100px;
+    margin-left: -250px;
+    bottom: 0px;
+    font-family: inherit;
+    background-color: #a45a1e;
+    border: none;
+    font-size: 1.5em;
+    color: #c4ddf2;
+}
+
+.new-game-input {
+    color: #fff;
+}
+
+.new-game-input h1 {
+    font-size: 4em;
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+    height: 50px;
+}
+
+.new-game-date {
+    font-style: italic;
+}
+
+button#ranomizer {
+    background: url(/static/images/die.png) no-repeat top left;
+
+    display: inline;
+    width:50px; 
+    height:50px; 
+    border: 0;
+    background-size: 100%; /* To fill the dimensions of container (button), or */
+    background-size: 50px auto; /* to specify dimensions explicitly */
+
+}
+
+#result1, #result2 {
+    display: inline;
+    width: 38%
+}
+
+.tracker-player1 h2, .tracker-player2 h2 {
+    margin-bottom: 0px;
+
+}
+
+.tracker-away h2, .tracker-home h2 {
+    margin-top: 0px;
+}
+
+section.period {
+    height: 110px;
+    border-top: 1px solid #505050;
+}
+
+label.asterisk-label {
+    font-size: 1.4em;
+}
+
+input#asterisk {
+    color: #000;
+    height: 20px;
+}
+
+
+
+
+/* Forms */
+
+.login {
+    display: block;
+    margin: 0 auto;
+    padding: 20px;
+    border: none;
+    margin-bottom: 2px;
+    width: 70%;
+    text-align: center;
+    background-color: #c4ddf2;
+    color: #4D6F8C;
+    font-size: 1em;
+}
+
+.login-user {
+    border-radius: 10px 10px 0px 0px;
+}
+
+.login-pass {
+    border-radius: 0px 0px 10px 10px;
+}
+
+.btn-login {
+    font-family: inherit;
+    background: none;
+    color: #c4ddf2;
+    border: none;
+    font-size: 1.4em;
+    padding: 12px;
+}
+
+.welcome {
+    color: #c4ddf2;
+}
+
+
+.footer {
+    margin-top: 30px;
+}
+
+.footer p {
+    font-family: inherit;
+    color: #4d6f8c;
+    margin: 0;
+    padding: 0;
+}
+
+.modal-placeholder {
+    width: 100%;
+}
+
+
+
+

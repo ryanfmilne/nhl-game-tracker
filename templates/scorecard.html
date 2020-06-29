@@ -1,0 +1,79 @@
+{% extends 'tracker.html' %}
+
+
+{% scorecard block %}
+      <!-- Game Input Popup --> 
+      <div id="trackModal">
+        <div class="new-game-input">
+          
+<!--           <h1>New Game</h1>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+
+          <input id = "spinner-6" />
+        <br/>
+        <button id = "stepUp-2">Increment</button>
+        <button id = "stepDown-2">Decrement</button> -->
+
+
+        <img class="modal-placeholder" src="static/images/NHL-Tracker-Form-v2.jpg">
+
+        </div>
+        <button id="trackClose">Submit Game</button>
+      </div>
+
+
+
+
+
+
+<img id="result1" src="https://content.sportslogos.net/logos/1/491/thumbs/wkue6hfkzqs2bnl0efw8sihf7.gif" alt="">
+
+<img id="result2" src="https://content.sportslogos.net/logos/1/491/thumbs/wkue6hfkzqs2bnl0efw8sihf7.gif" alt="">
+
+
+<br>
+<button id="ranomizer">RANDOM TEAM</button>
+
+
+
+
+
+
+<script type="text/javascript">
+  $( "button" ).click(function() {
+
+
+  var intrvl = setInterval(numbFunction, 10); //repeat function after 1.5 seconds(1500 ms)
+      function numbFunction() {
+          var images = [
+              "https://content.sportslogos.net/logos/1/24/thumbs/2463622017.gif",
+              "https://content.sportslogos.net/logos/1/22/thumbs/161.gif",
+              "https://content.sportslogos.net/logos/1/18/thumbs/32tfs723a3bes0p0hb4hgcy1u.gif",
+              "https://content.sportslogos.net/logos/1/17/thumbs/lvchw3qfsun2e7oc02kh2zxb6.gif",
+              "https://content.sportslogos.net/logos/1/6114/thumbs/611426842018.gif",
+              "https://content.sportslogos.net/logos/1/30/thumbs/llrs2zxi127vkqgcsvfb.gif",
+              "https://content.sportslogos.net/logos/1/12/thumbs/1227282018.gif"
+          ];
+
+          var x = Math.floor((Math.random() * 7) + 0); //return a random no. between 1 to 10
+          
+          var y = Math.floor((Math.random() * 7) + 0); //return a random no. between 1 to 10
+          
+          
+          document.getElementById("result1").src = images[x];
+          document.getElementById("result2").src = images[y];
+          
+          setTimeout(function () {
+            //your code here...
+            clearInterval(intrvl);
+          
+           }, 1000); // time out end  
+      }
+   
+}); // on click end
+
+
+</script>
+
+
+{% endblock %}
