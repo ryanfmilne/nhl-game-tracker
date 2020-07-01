@@ -26,101 +26,38 @@
         <!-- Recent Games Label --> 
         <p class="recent-games-label">Recent Games</p>
 
-
+			{% for game in games %}
 		        <!-- Game Scores --> 
 		        <div class="game">
-		            <p class="game-date">June 25th, 2020</p>
+					<p class="game-date">{{ game_date }}</p>
 		            <table>
 		                <tr>
-		                  <th>Player</th>
-		                  <th>Team</th>
-		                  <th>1st</th>
-		                  <th>2nd</th>
-		                  <th>3rd</th>
-		                  <th>Final</th>
+							<th>Player</th>
+							<th>Team</th>
+							<th>1st</th>
+							<th>2nd</th>
+							<th>3rd</th>
+							<th>Final</th>
 		                </tr>
 		                <tr>
-		                  <td>Ryan</td>
-		                  <td>Chicago Blackhawks</td>
-		                  <td>0</td>
-		                  <td>3</td>
-		                  <td>1</td>
-		                  <td>4</td>
+							<td>{{ game.away_player }}</td>
+							<td>{{ game.away_team }}</td>
+							<td>{{ game.away_period_1 }}</td>
+							<td>{{ game.away_period_2 }}</td>
+							<td>{{ game.away_period_3 }}</td>
+							<td>{{ game.away_final }}</td>
 		                </tr>
 		                <tr>
-		                  <td>Nick</td>
-		                  <td>Washington Capitals</td>
-		                  <td>1</td>
-		                  <td>2</td>
-		                  <td>1</td>
-		                  <td>4</td>
+						  	<td>{{ game.home_player }}</td>
+							<td>{{ game.home_team }}</td>
+							<td>{{ game.home_period_1 }}</td>
+							<td>{{ game.home_period_2 }}</td>
+							<td>{{ game.home_period_3 }}</td>
+							<td>{{ game.home_final }}</td>
 		                </tr>
 		              </table>
 		        </div>
-
-
-		        <!-- Game Scores --> 
-		        <div class="game">
-		            <p class="game-date">June 24th, 2020</p>
-		            <table>
-		                <tr>
-		                  <th>Player</th>
-		                  <th>Team</th>
-		                  <th>1st</th>
-		                  <th>2nd</th>
-		                  <th>3rd</th>
-		                  <th>Final</th>
-		                </tr>
-		                <tr>
-		                  <td>Ryan</td>
-		                  <td>Nashville Predators</td>
-		                  <td>0</td>
-		                  <td>3</td>
-		                  <td>1</td>
-		                  <td>4</td>
-		                </tr>
-		                <tr>
-		                  <td>Nick</td>
-		                  <td>New Jersey Devils</td>
-		                  <td>1</td>
-		                  <td>2</td>
-		                  <td>1</td>
-		                  <td>4</td>
-		                </tr>
-		              </table>
-		        </div>
-
-		        		        <!-- Game Scores --> 
-		        <div class="game">
-		            <p class="game-date">June 22th, 2020</p>
-		            <table>
-		                <tr>
-		                  <th>Player</th>
-		                  <th>Team</th>
-		                  <th>1st</th>
-		                  <th>2nd</th>
-		                  <th>3rd</th>
-		                  <th>Final</th>
-		                </tr>
-		                <tr>
-		                  <td>Ryan</td>
-		                  <td>Minnesota Wild</td>
-		                  <td>0</td>
-		                  <td>3</td>
-		                  <td>1</td>
-		                  <td>4</td>
-		                </tr>
-		                <tr>
-		                  <td>Nick</td>
-		                  <td>Vegas Golden Knights</td>
-		                  <td>1</td>
-		                  <td>2</td>
-		                  <td>1</td>
-		                  <td>4</td>
-		                </tr>
-		              </table>
-		        </div>
-
+			{% endfor %}
 
               <!-- Game Input Popup --> 
       <div id="trackModal">
@@ -174,19 +111,15 @@
 					<input type="number" id="away-period-3" name="away-period-3" min="0" max="20" value="0">
 					<input type="number" id="home-period-3" name="home-period-3" min="0" max="20" value="0">				  
 				</section>
-
+				<!--
 				<div>
 					<label class="asterisk-label" for="asterisk">*</label>
 					<input class="asterisk-box" type="checkbox" id="asterisk" name="asterisk" value="asterisk">
 				</div>
-				
+				-->
+				<button input="submit" value="Post" id="submit-game">Submit Game</button>
 			</form>
 
-
-
-        <!-- <img class="modal-placeholder" src="static/images/NHL-Tracker-Form-v2.jpg">-->
-        </div>
-        <button id="trackClose">Submit Game</button>
       </div>
 
 
