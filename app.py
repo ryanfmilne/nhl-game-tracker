@@ -16,7 +16,20 @@ class Game(db.Model):
 		return 'game ' + str(self.id)
 
 
-db.create_all()
+class Team(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.String(100), nullable=False)
+
+	def __repr__(self):
+		return 'team ' + str(self.id)
+		
+class Player(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.String(100), nullable=False)
+
+	def __repr__(self):
+		return 'player ' + str(self.id)
+
 
 @app.route('/')
 def index():
