@@ -167,6 +167,10 @@ section.period {
     width: 20%;
 }
 
+.score-input {
+    width: 30%;
+}
+
 .new-game-input input {
     background: none;
     color: #fff;
