@@ -82,7 +82,7 @@ def tracker():
 		db.session.commit()
 		return redirect('/tracker')
 	else:
-		all_games = Game.query.order_by(Game.game_date).all()
+		all_games = Game.query.order_by(Game.game_date.desc()).all()
 		return render_template('tracker.html', games=all_games)
 
 

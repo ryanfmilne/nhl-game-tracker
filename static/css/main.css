@@ -146,6 +146,14 @@ button#trackClose {
     width: 38%
 }
 
+.select-player {
+    background: none;
+    color: #fff;
+    border: none;
+    font-family: inherit;
+    font-size: 1.5em;
+    }
+
 .tracker-player1 h2, .tracker-player2 h2 {
     margin-bottom: 0px;
 
@@ -164,7 +172,7 @@ section.period {
 }
 
 .clear-score-1.inline-flex {
-    width: 20%;
+    width: 14%;
 }
 
 .score-input {

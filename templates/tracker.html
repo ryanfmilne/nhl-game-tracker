@@ -72,16 +72,16 @@
 					<!-- TEAM PLAYER ONE, PLAYER TWO -->
 					<section class="flex-container">
 						<div class="flex-child tracker-player1">
-							<h2>Player 1</h2>
-							<select id='player-1' name='player-1' value='Choose Player'>
+							<!-- <h2>Player 1</h2> --> 
+							<select class="select-player" id='player-1' name='player-1' value='Choose Player'>
 								<!-- ## database ## - Grab these values from User Table -->  
 								<option value="ryan">Ryan</option>
 								<option value="nick">Nick</option>
 							</select>
 						</div>
 						<div class="flex-child tracker-player2">
-							<h2>Player 2</h2>
-							<select id='player-1' name='player-1' value='Choose Player'>
+							<!-- <h2>Player 2</h2> -->
+							<select class="select-player" id='player-2' name='player-2' value='Choose Player'>
 								<!-- ## database ## - Grab these values from User Table -->  
 								<option value="nick">Nick</option>
 								<option value="ryan">Ryan</option>
@@ -170,9 +170,9 @@
 
 
 <script type="text/javascript">
+
+  // Random Teams Logic
   $( '#ranomizer' ).click(function() {
-
-
   var intrvl = setInterval(numbFunction, 10); //repeat function after 1.5 seconds(1500 ms)
       function numbFunction() {
           var images = [
@@ -227,8 +227,31 @@
 
           console.log("Away: " + x + " Home: " + y);
       }
-   
 }); // on click end
+
+
+// Player Selction Logic (Can't be same player) Ugly code
+$('#player-1').change(function(){
+  if($(this).val() == 'ryan'){ // or this.value == 'volvo'
+    $('#player-2').val('nick');
+  }
+});
+$('#player-1').change(function(){
+  if($(this).val() == 'nick'){ // or this.value == 'volvo'
+    $('#player-2').val('ryan');
+  }
+});
+$('#player-2').change(function(){
+  if($(this).val() == 'nick'){ // or this.value == 'volvo'
+    $('#player-1').val('ryan');
+  }
+});
+$('#player-2').change(function(){
+  if($(this).val() == 'ryan'){ // or this.value == 'volvo'
+    $('#player-1').val('nick');
+  }
+});
+
 
 </script>
 
