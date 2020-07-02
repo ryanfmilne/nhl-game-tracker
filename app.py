@@ -76,14 +76,13 @@ def tracker():
 			home_period_2=home_2,
 			home_period_3=home_3,
 			home_final=home_final_score,
-			game_date=game_date
-
+			# game_date=game_date
 			)
 		db.session.add(all_games)
 		db.session.commit()
 		return redirect('/tracker')
 	else:
-		all_games = Game.query.order_by(Game.game_date).all()	
+		all_games = Game.query.order_by(Game.game_date).all()
 		return render_template('tracker.html', games=all_games)
 
 
