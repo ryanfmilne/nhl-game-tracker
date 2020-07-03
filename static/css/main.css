@@ -151,7 +151,8 @@ button#trackClose {
     color: #fff;
     border: none;
     font-family: inherit;
-    font-size: 1.5em;
+    font-size: 2em;
+    -webkit-appearance: none; /* Turn off Dropdown Arrows */
     }
 
 .tracker-player1 h2, .tracker-player2 h2 {
@@ -165,10 +166,12 @@ button#trackClose {
 
 section.period {
     border-top: 1px solid #505050;
+    padding-bottom: 40px;
 }
 
 .score-plus-minus {
     font-size: 70px;
+    display: none;
 }
 
 .clear-score-1.inline-flex {
@@ -177,6 +180,9 @@ section.period {
 
 .score-input {
     width: 30%;
+    text-align: center;
+    display: inline-block;
+    font-size: 1.4em;
 }
 
 .new-game-input input {
