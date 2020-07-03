@@ -62,10 +62,11 @@
               <!-- Game Input Popup --> 
       <div id="trackModal">
         <div class="new-game-input">
-
+			<div id="cancel-game">x</div>
           	<section>
-          		<h1>New Matchup</h1>
-        		<p class="new-game-date">June 26th, 2020</p>
+				  <h1>New Matchup</h1>
+				<p class="new-game-date">{{ now.strftime('%B %-d %Y') }}</p>
+        		<!-- <p class="new-game-date">June 26th, 2020</p> -->
 			  </section>
 
 			<form action="/tracker" method="POST">
@@ -75,16 +76,22 @@
 							<!-- <h2>Player 1</h2> --> 
 							<select class="select-player" id='player-1' name='player-1' value='Choose Player'>
 								<!-- ## database ## - Grab these values from User Table -->  
+								<option value="none" selected disabled hidden>Player 1</option> 
 								<option value="ryan">Ryan</option>
 								<option value="nick">Nick</option>
+								<option value="nick">Joseph</option>
+								<option value="nick">Steele</option>
 							</select>
 						</div>
 						<div class="flex-child tracker-player2">
 							<!-- <h2>Player 2</h2> -->
 							<select class="select-player" id='player-2' name='player-2' value='Choose Player'>
 								<!-- ## database ## - Grab these values from User Table -->  
-								<option value="nick">Nick</option>
-								<option value="ryan">Ryan</option>
+								<option value="none" selected disabled hidden>Player 2</option> 
+								<option value="nick">Ryan</option>
+								<option value="ryan">Nick</option>
+								<option value="nick">Joseph</option>
+								<option value="nick">Steele</option>
 							</select>
 						</div>
 					</section>
@@ -263,12 +270,12 @@
 
 					</section>
 
-					<!--
+					
 					<div>
 						<label class="asterisk-label" for="asterisk">*</label>
 						<input class="asterisk-box" type="checkbox" id="asterisk" name="asterisk" value="asterisk">
 					</div>
-					-->
+					
 					<button input="submit" value="Post" id="submit-game">Submit Game</button>
 			</form>
 
@@ -342,27 +349,54 @@
 }); // on click end
 
 
-// Player Selction Logic (Can't be same player) Ugly code
-$('#player-1').change(function(){
-  if($(this).val() == 'ryan'){ // or this.value == 'volvo'
-    $('#player-2').val('nick');
-  }
-});
-$('#player-1').change(function(){
-  if($(this).val() == 'nick'){ // or this.value == 'volvo'
-    $('#player-2').val('ryan');
-  }
-});
-$('#player-2').change(function(){
-  if($(this).val() == 'nick'){ // or this.value == 'volvo'
-    $('#player-1').val('ryan');
-  }
-});
-$('#player-2').change(function(){
-  if($(this).val() == 'ryan'){ // or this.value == 'volvo'
-    $('#player-1').val('nick');
-  }
-});
+function preventDupes( select, index ) {
+    var options = select.options,
+        len = options.length;
+    while( len-- ) {
+        options[ len ].disabled = false;
+    }
+    select.options[ index ].disabled = true;
+    if( index === select.selectedIndex ) {
+        alert('You\'ve already selected the item "' + select.options[index].text + '".\n\nPlease choose another.');
+        this.selectedIndex = 0;
+    }
+}
+
+var select1 = select = document.getElementById( 'player-1' );
+var select2 = select = document.getElementById( 'player-2' );
+
+select1.onchange = function() {
+    preventDupes.call(this, select2, this.selectedIndex );
+};
+
+select2.onchange = function() {
+    preventDupes.call(this, select1, this.selectedIndex );
+};
+
+
+
+
+// // 2 Player Selction Logic (Can't be same player) Ugly code
+// $('#player-1').change(function(){
+//   if($(this).val() == 'ryan'){ // or this.value == 'volvo'
+//     $('#player-2').val('nick');
+//   }
+// });
+// $('#player-1').change(function(){
+//   if($(this).val() == 'nick'){ // or this.value == 'volvo'
+//     $('#player-2').val('ryan');
+//   }
+// });
+// $('#player-2').change(function(){
+//   if($(this).val() == 'nick'){ // or this.value == 'volvo'
+//     $('#player-1').val('ryan');
+//   }
+// });
+// $('#player-2').change(function(){
+//   if($(this).val() == 'ryan'){ // or this.value == 'volvo'
+//     $('#player-1').val('nick');
+//   }
+// });
 
 
 </script>

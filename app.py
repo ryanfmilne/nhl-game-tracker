@@ -82,10 +82,15 @@ def tracker():
 		db.session.commit()
 		return redirect('/tracker')
 	else:
-		all_games = Game.query.order_by(Game.game_date.desc()).all()
-		return render_template('tracker.html', games=all_games)
+		all_games = Game.query.order_by(Game.game_date.desc()).limit(5).all()
+		now = datetime.now()
+		return render_template('tracker.html', games=all_games, now=now)
 
 
- 
+
 if __name__ == "__main__":
 	app.run(debug=True)
+
+# Local Netowrk Hosting
+# if __name__ == "__main__":
+# 	app.run(host='0.0.0.0', threaded=True, debug=True)

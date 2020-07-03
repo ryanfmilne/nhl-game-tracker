@@ -4,12 +4,18 @@ body {
     margin: 0;
     padding: 0;
     position: relative;
+    padding-bottom: 0 !important
 }
 
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
+}
+
+*:focus {
+    outline: none;
+    box-shadow:none;
 }
 
 .inline-flex {
@@ -86,6 +92,20 @@ table {
     width: 100%;
 }
 
+div#cancel-game {
+    position: fixed;
+    /* padding: 19px 0px 0px 31px; */
+    text-transform: lowercase;
+    border: 2px solid #fff;
+    border-radius: 50px;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    margin-top: 5px;
+    margin-left: 10px;
+    background-color: #000;
+}
+
 #trackModal {
     display: none;
     position: absolute;
@@ -94,24 +114,12 @@ table {
     top:0;
     left:0;
     width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.81);
 }
 
-button#trackClose {
-    position: fixed;
-    width: 500px;
-    height: 80px;
-    /* top: 50%; */
-    /* left: 50%; */
-    margin-top: -100px;
-    margin-left: -250px;
-    bottom: 0px;
-    font-family: inherit;
-    background-color: #a45a1e;
-    border: none;
-    font-size: 1.5em;
-    color: #c4ddf2;
-}
+
+
 
 .new-game-input {
     color: #fff;
@@ -203,7 +211,19 @@ input#asterisk {
     height: 20px;
 }
 
-
+button#submit-game {
+    width: 100%;
+    font-family: inherit;
+    padding: 25px;
+    font-size: 2em;
+    color: #fff;
+    background-color: #a45a1e;
+    border: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+}
 
 
 /* Forms */

@@ -24,14 +24,16 @@
 
         {% block content %}{% endblock %}
 
-        <div class="footer">
-          <p>ea nhl score tracker</p>
-          <p>v.1.0 - 2020</p>
-        </div>
+
 
     </div>
 
-      <!-- Javascript / jQuery --> 
+    <div class="footer">
+      <p>ea nhl score tracker</p>
+      <p>v.1.0 - 2020</p>
+    </div>
+
+      <!-- Open Game Tracker Modal --> 
       <script>
         jQuery.easing.def = "easeOutBounce";
 
@@ -46,23 +48,15 @@
         
       });
          });
-
       </script>
 
-      <!-- Javascript Spinner -->
       <script>
-         $(function() {
-            $("#spinner-6").spinner();
-            $('button').button();
+         jQuery.easing.def = "easeOutBounce";
 
-            $('#stepUp-2').click(function () {
-               $("#spinner-6").spinner("stepUp");
-            });
-
-            $('#stepDown-2').click(function () {
-               $("#spinner-6").spinner("stepDown");
-            });
-
+         $( "#cancel-game" ).click(function() {
+         $( "#trackModal" ).slideUp(1000, function() {
+         // Animation complete.
+         });
          });
       </script>
 
