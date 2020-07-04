@@ -54,9 +54,16 @@ def index():
 def tracker():
 
 	if request.method == 'POST':
+		away_p = request.form['player-1']
+		away_team_name = request.form['away-team-name']
+		
 		away_1 = request.form['away-period-1']
 		away_2 = request.form['away-period-2']
 		away_3 = request.form['away-period-3']
+
+		home_p = request.form['player-2']
+		home_team_name = request.form['home-team-name']
+
 		home_1 = request.form['home-period-1']
 		home_2 = request.form['home-period-2']
 		home_3 = request.form['home-period-3']
@@ -64,14 +71,14 @@ def tracker():
 		home_final_score = int(home_1) + int(home_2) + int(home_3)
 
 		all_games = Game(
-			away_team='Nashville Predators',
-			away_player='Ryan',
+			away_team=away_team_name,
+			away_player=away_p,
 			away_period_1=away_1,
 			away_period_2=away_2,
 			away_period_3=away_3,
 			away_final=away_final_score, #
-			home_team='Washington Capitals',
-			home_player='Nick',
+			home_team=home_team_name,
+			home_player=home_p,
 			home_period_1=home_1,
 			home_period_2=home_2,
 			home_period_3=home_3,
@@ -88,9 +95,9 @@ def tracker():
 
 
 
-if __name__ == "__main__":
-	app.run(debug=True)
-
-# Local Netowrk Hosting
 # if __name__ == "__main__":
-# 	app.run(host='0.0.0.0', threaded=True, debug=True)
+# 	app.run(debug=True)
+
+
+if __name__ == "__main__":
+	app.run(host='0.0.0.0', threaded=True, debug=True)

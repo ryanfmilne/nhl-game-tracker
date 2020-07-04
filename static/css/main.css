@@ -172,10 +172,23 @@ div#cancel-game {
     margin-top: 0px;
 }
 
-section.period {
+section.period-pannel {
     border-top: 1px solid #505050;
     padding-bottom: 40px;
 }
+
+#period-pannel-2 {
+    /* display: none; */
+}
+
+#period-pannel-3 {
+    /* display: none; */
+}
+
+#submit-game {
+    /* display: none; */
+}
+
 
 .score-plus-minus {
     font-size: 70px;

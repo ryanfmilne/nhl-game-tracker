@@ -24,9 +24,8 @@
 
         {% block content %}{% endblock %}
 
-
-
     </div>
+
 
     <div class="footer">
       <p>ea nhl score tracker</p>
@@ -36,23 +35,25 @@
       <!-- Open Game Tracker Modal --> 
       <script>
         jQuery.easing.def = "easeOutBounce";
-
         $( "#trackGame" ).click(function() {
         $( "#trackModal" ).slideDown(1000, function() {
           // Animation complete.
         });
       });
-
-      $("#submit-game").click(function () {        
-      $('#trackModal').slideUp(1000, function() {
-        
-      });
-         });
       </script>
 
+      <!--  // Submit Game Button Closes Tracker Function -->
+      <!-- <script>
+        jQuery.easing.def = "easeOutBounce";
+        $("#submit-game").click(function () {        
+        $('#trackModal').slideUp(1000, function() {
+          });
+        });
+      </script> -->
+
+      <!-- Cancel Game Button -->
       <script>
          jQuery.easing.def = "easeOutBounce";
-
          $( "#cancel-game" ).click(function() {
          $( "#trackModal" ).slideUp(1000, function() {
          // Animation complete.
