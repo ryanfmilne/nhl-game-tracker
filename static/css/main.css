@@ -114,7 +114,6 @@ div#cancel-game {
     top:0;
     left:0;
     width: 100%;
-    height: 100%;
     background: rgba(0, 0, 0, 0.81);
 }
 
@@ -183,6 +182,14 @@ section.period-pannel {
 
 #period-pannel-3 {
     /* display: none; */
+}
+
+#period-pannel-ot-1 {
+    display: none;
+}
+
+section#spacer {
+    min-height: 120px;
 }
 
 #submit-game {
@@ -278,6 +285,7 @@ button#submit-game {
 
 .footer {
     margin-top: 30px;
+    text-align: center;
 }
 
 .footer p {

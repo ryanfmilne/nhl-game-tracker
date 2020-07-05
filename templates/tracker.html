@@ -36,6 +36,7 @@
 							<th>1st</th>
 							<th>2nd</th>
 							<th>3rd</th>
+							<th>OT</th>
 							<th>Final</th>
 		                </tr>
 		                <tr>
@@ -44,6 +45,7 @@
 							<td>{{ game.away_period_1 }}</td>
 							<td>{{ game.away_period_2 }}</td>
 							<td>{{ game.away_period_3 }}</td>
+							<td>{{ game.away_ot_1 }}</td>
 							<td>{{ game.away_final }}</td>
 		                </tr>
 		                <tr>
@@ -52,6 +54,7 @@
 							<td>{{ game.home_period_1 }}</td>
 							<td>{{ game.home_period_2 }}</td>
 							<td>{{ game.home_period_3 }}</td>
+							<td>{{ game.home_ot_1 }}</td>
 							<td>{{ game.home_final }}</td>
 		                </tr>
 		              </table>
@@ -117,7 +120,7 @@
 
 							<div class='score-input score-input-away inline-flex'>
 								<div class="score-plus-minus">-</div>
-								<select class="select-player" id='away-period-1' name='away-period-1' value='0' required> 
+								<select class="select-player period-scores" id='away-period-1' name='away-period-1' value='0' required> 
 									<option selected disabled hidden value="">-</option>
 									<option value="0">0</option>
 									<option value="1">1</option>
@@ -143,7 +146,7 @@
 
 							<div class='score-input score-input-home inline-flex'>
 								<div class="score-plus-minus">-</div>
-								<select class="select-player" id='home-period-1' name='home-period-1' value='0' required> 
+								<select class="select-player period-scores" id='home-period-1' name='home-period-1' value='0' required> 
 									<option selected disabled hidden value="">-</option>
 									<option value="0">0</option>
 									<option value="1">1</option>
@@ -172,7 +175,7 @@
 
 						<div class='score-input score-input-away inline-flex'>
 							<div class="score-plus-minus">-</div>
-							<select class="select-player" id='away-period-2' name='away-period-2' value='0' required> 
+							<select class="select-player period-scores" id='away-period-2' name='away-period-2' value='0' required> 
 								<option selected disabled hidden value="">-</option>
 								<option value="0">0</option>
 								<option value="1">1</option>
@@ -198,7 +201,7 @@
 
 						<div class='score-input score-input-home inline-flex'>
 							<div class="score-plus-minus">-</div>
-							<select class="select-player" id='home-period-2' name='home-period-2' value='0' required> 
+							<select class="select-player period-scores" id='home-period-2' name='home-period-2' value='0' required> 
 								<option selected disabled hidden value="">-</option>
 								<option value="0">0</option>
 								<option value="1">1</option>
@@ -227,7 +230,7 @@
 
 						<div class='score-input score-input-away inline-flex'>
 							<div class="score-plus-minus">-</div>
-							<select class="select-player" id='away-period-3' name='away-period-3' value='0' required> 
+							<select class="select-player period-scores" id='away-period-3' name='away-period-3' value='0' required> 
 								<option selected disabled hidden value="">-</option>
 								<option value="0">0</option>
 								<option value="1">1</option>
@@ -253,7 +256,7 @@
 
 						<div class='score-input score-input-home inline-flex'>
 							<div class="score-plus-minus">-</div>
-							<select class="select-player" id='home-period-3' name='home-period-3' value='0' required> 
+							<select class="select-player period-scores" id='home-period-3' name='home-period-3' value='0' required> 
 								<option selected disabled hidden value="">-</option>
 								<option value="0">0</option>
 								<option value="1">1</option>
@@ -277,11 +280,42 @@
 
 					</section>
 
+					<section id="period-pannel-ot-1" class="period-pannel"> <!-- OVERTIME 1 -->
+						<h3>Over Time</h3>
+
+						<div class='score-input score-input-away inline-flex'>
+							<div class="score-plus-minus">-</div>
+							<select class="select-player" id='away-ot-1' name='away-ot-1' value='0'> 
+								<option selected hidden value="0">-</option>
+								<option value="0">0</option>
+								<option value="1">1</option>
+							</select>
+							<div class="score-plus-minus">+</div>
+						</div>
+
+						<div class="clear-score-1 inline-flex"></div> <!-- score clear -->
+
+						<div class='score-input score-input-home inline-flex'>
+							<div class="score-plus-minus">-</div>
+							<select class="select-player" id='home-ot-1' name='home-ot-1' value='0'> 
+								<option selected hidden value="0">-</option>
+								<option value="0">0</option>
+								<option value="1">1</option>
+							</select>
+							<div class="score-plus-minus">+</div>
+						</div>
+
+					</section>
+
 					
-					<div>
+					<section id="asterisk">
 						<label class="asterisk-label" for="asterisk">*</label>
 						<input class="asterisk-box" type="checkbox" id="asterisk" name="asterisk" value="asterisk">
-					</div>
+					</section>
+
+					<section id="spacer"> <!-- Make height of button -->
+
+					</section>
 					
 					<button input="submit" value="Post" id="submit-game">Submit Game</button>
 			</form>
@@ -489,13 +523,21 @@
 </script>
 
 
-<!-- Period Drop Down -->
+<!-- Over Time Drop Down -->
 <script type="text/javascript">
-
-
-
-
-
+	$('.period-scores').change(function() {
+		console.log('Period Changed!')
+		// grab all period score values
+		// x = $(this).val()	
+		// console.log(x)
+		var allScores = $('.period-scores').map((_,el) => el.value).get()
+		console.log(allScores)
+		// If all scores are 0 toggle OT section
+		if (allScores[0] == 0 && allScores[1] == 0 && allScores[2] == 0 && allScores[3] == 0 && allScores[4] == 0 && allScores[5]) {
+			console.log('OT BABY!')
+			$('#period-pannel-ot-1').toggle();
+		} 
+	});
 </script>
 
 
