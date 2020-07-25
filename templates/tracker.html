@@ -71,7 +71,7 @@
         		<!-- <p class="new-game-date">June 26th, 2020</p> -->
 			  </section>
 
-			<form action="/tracker" method="POST">
+			<form id="game-tracker" action="/tracker" method="POST">
 					<!-- TEAM PLAYER ONE, PLAYER TWO -->
 					<section class="flex-container">
 						<div class="flex-child tracker-player1">
@@ -147,7 +147,7 @@
 							<div class='score-input score-input-home inline-flex'>
 								<div class="score-plus-minus">-</div>
 								<select class="select-player period-scores" id='home-period-1' name='home-period-1' value='0' required> 
-									<option selected disabled hidden value="">-</option>
+									<option selected hidden value="">-</option>
 									<option value="0">0</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
@@ -176,7 +176,7 @@
 						<div class='score-input score-input-away inline-flex'>
 							<div class="score-plus-minus">-</div>
 							<select class="select-player period-scores" id='away-period-2' name='away-period-2' value='0' required> 
-								<option selected disabled hidden value="">-</option>
+								<option selected hidden value="">-</option>
 								<option value="0">0</option>
 								<option value="1">1</option>
 								<option value="2">2</option>
@@ -202,7 +202,7 @@
 						<div class='score-input score-input-home inline-flex'>
 							<div class="score-plus-minus">-</div>
 							<select class="select-player period-scores" id='home-period-2' name='home-period-2' value='0' required> 
-								<option selected disabled hidden value="">-</option>
+								<option selected hidden value="">-</option>
 								<option value="0">0</option>
 								<option value="1">1</option>
 								<option value="2">2</option>
@@ -231,7 +231,7 @@
 						<div class='score-input score-input-away inline-flex'>
 							<div class="score-plus-minus">-</div>
 							<select class="select-player period-scores" id='away-period-3' name='away-period-3' value='0' required> 
-								<option selected disabled hidden value="">-</option>
+								<option selected hidden value="">-</option>
 								<option value="0">0</option>
 								<option value="1">1</option>
 								<option value="2">2</option>
@@ -257,7 +257,7 @@
 						<div class='score-input score-input-home inline-flex'>
 							<div class="score-plus-minus">-</div>
 							<select class="select-player period-scores" id='home-period-3' name='home-period-3' value='0' required> 
-								<option selected disabled hidden value="">-</option>
+								<option selected hidden value="">-</option>
 								<option value="0">0</option>
 								<option value="1">1</option>
 								<option value="2">2</option>
@@ -281,7 +281,8 @@
 					</section>
 
 					<section id="period-pannel-ot-1" class="period-pannel"> <!-- OVERTIME 1 -->
-						<h3>Over Time</h3>
+						<h3 id="ot-count-button">OVERTIME <span id="ot-count-display"></span></h3>
+						<input class="hidden" type="text" id="ot-count" name="ot-count" value="1">
 
 						<div class='score-input score-input-away inline-flex'>
 							<div class="score-plus-minus">-</div>
@@ -324,8 +325,32 @@
 
 
 
-<!-- Team Randomizer -->
-<script type="text/javascript"> 
+
+<!-- Cancel Tracker Button -->
+<script type="text/javascript">
+	$("#cancel-game").click(function () {
+
+		// slide up tracker window
+		$( "#trackModal" ).slideUp(1000, function() {
+		// Animation complete.
+		});
+		// reset game scores
+  		$("#game-tracker")[0].reset();
+
+		// set NHL teams back to default NHL logo
+		$("#home-team-name").val('')  
+		$("#result1").attr("src","static/images/nhl_logos/nhl-logo-480x480.png");
+		
+		$("#home-team-name").val('') 
+		$("#result2").attr("src","static/images/nhl_logos/nhl-logo-480x480.png");
+
+  		return false; // prevent submitting
+});
+</script>
+
+
+<!-- Team Randomizer 1.0 -->
+<!-- <script type="text/javascript"> 
   // Random Teams Logic
   $( '#ranomizer' ).click(function() {
   var intrvl = setInterval(numbFunction, 10); //repeat function after 1.5 seconds(1500 ms)
@@ -490,7 +515,213 @@
 		  console.log(allteams[y].name)
       }
 }); // on click end
-</script>
+</script> -->
+
+<!-- Team Randomizer 2.0 -->
+<script type="text/javascript"> 
+	// Random Teams Logic
+	$( '#ranomizer' ).click(function() {
+	var intrvl = setInterval(numbFunction, 10); //repeat function after 1.5 seconds(1500 ms)
+		function numbFunction() {
+			
+				  var allteams = [
+				  {
+					  "name":"Anaheim Ducks",
+					  "image":"static/images/nhl_logos/nhl-anaheim-ducks-logo-480x480.png"
+				  },
+				  {
+					  "name":"Arizona Coyotes",
+					  "image":"static/images/nhl_logos/nhl-arizona-coyotes-logo-480x480.png"
+				  },
+				  {
+					  "name":"Boston Bruins",
+					  "image":"static/images/nhl_logos/nhl-boston-bruins-logo-480x480.png"
+				  },
+				  {
+					  "name":"Buffalo Sabres",
+					  "image":"static/images/nhl_logos/nhl-buffalo-sabres-logo-480x480.png"
+				  },
+				  {
+					  "name":"Calgary Flames",
+					  "image":"static/images/nhl_logos/nhl-calgary-flames-logo-480x480.png"
+				  },
+				  {
+					  "name":"Carolina Hurricanes",
+					  "image":"static/images/nhl_logos/nhl-carolina-hurricanes-logo-480x480.png"
+				  },
+				  {
+					  "name":"Chicago Blackhawks",
+					  "image":"static/images/nhl_logos/nhl-chicago-blackhawks-logo-480x480.png"
+				  },
+				  {
+					  "name":"Colorado Avalanche",
+					  "image":"static/images/nhl_logos/nhl-colorado-avalanche-logo-480x480.png"
+				  },
+				  {
+					  "name":"Columbus Blue Jackets",
+					  "image":"static/images/nhl_logos/nhl-columbus-blue-jackets-logo-480x480.png"
+				  },
+				  {
+					  "name":"Dallas Stars",
+					  "image":"static/images/nhl_logos/nhl-dallas-stars-logo-480x480.png"
+				  },
+				  {
+					  "name":"Detroit Red Wings",
+					  "image":"static/images/nhl_logos/nhl-detroit-red-wings-logo-480x480.png"
+				  },
+				  {
+					  "name":"Edmonton Oilers",
+					  "image":"static/images/nhl_logos/nhl-edmonton-oilers-logo.png"
+				  },
+				  {
+					  "name":"Florida Panthers",
+					  "image":"static/images/nhl_logos/nhl-florida-panthers-logo-480x480.png"
+				  },
+				  {
+					  "name":"Los Angeles Kings",
+					  "image":"static/images/nhl_logos/nhl-los-angeles-kings-logo-480x480.png"
+				  },
+				  {
+					  "name":"Minnesota Wild",
+					  "image":"static/images/nhl_logos/nhl-minnesota-wild-logo-480x480.png"
+				  },
+				  {
+					  "name":"Montreal Canadiends",
+					  "image":"static/images/nhl_logos/nhl-montreal-canadiens-logo-480x480.png"
+				  },
+				  {
+					  "name":"Nashville Predators",
+					  "image":"static/images/nhl_logos/nhl-nashville-predators-logo-480x480.png"
+				  },
+				  {
+					  "name":"New Jersey Devils",
+					  "image":"static/images/nhl_logos/nhl-new-jersey-devils-logo-480x480.png"
+				  },
+				  {
+					  "name":"New York Islanders",
+					  "image":"static/images/nhl_logos/nhl-new-york-islanders-logo-480x480.png"
+				  },
+				  {
+					  "name":"New York Rangers",
+					  "image":"static/images/nhl_logos/nhl-new-york-rangers-logo-480x480.png"
+				  },
+				  {
+					  "name":"Ottawa Senators",
+					  "image":"static/images/nhl_logos/nhl-ottawa-senators-logo-480x480.png"
+				  },
+				  {
+					  "name":"Philadelphia Flyers",
+					  "image":"static/images/nhl_logos/nhl-philadelphia-flyers-logo-480x480.png"
+				  },
+				  {
+					  "name":"Pittsburgh Penguins",
+					  "image":"static/images/nhl_logos/nhl-pittsburgh-penguins-logo-480x480.png"
+				  },
+				  {
+					  "name":"San Jose Sharks",
+					  "image":"static/images/nhl_logos/nhl-san-jose-sharks-logo-480x480.png"
+				  },
+				  {
+					  "name":"St Louis Blues",
+					  "image":"static/images/nhl_logos/nhl-st-louis-blues-logo-480x480.png"
+				  },
+				  {
+					  "name":"Tampa Bay Lightning",
+					  "image":"static/images/nhl_logos/nhl-tampa-bay-lightning-logo-480x480.png"
+				  },
+				  {
+					  "name":"Toronto Maple Leafs",
+					  "image":"static/images/nhl_logos/nhl-toronto-maple-leafs-logo-480x480.png"
+				  },
+				  {
+					  "name":"Vancouver Canucks",
+					  "image":"static/images/nhl_logos/nhl-vancouver-canucks-logo-480x480.png"
+				  },
+				  {
+					  "name":"Vegas Golden Knights",
+					  "image":"static/images/nhl_logos/nhl-vegas-golden-knights-logo-480x480.png"
+				  },
+				  {
+					  "name":"Washington Capitals",
+					  "image":"static/images/nhl_logos/nhl-washington-capitals-logo-480x480.png"
+				  },
+				  {
+					  "name":"Winnipeg Jets",
+					  "image":"static/images/nhl_logos/nhl-winnipeg-jets-logo-480x480.png"
+				  }
+				  ];
+  
+  
+			var x = Math.floor((Math.random() * 31) + 0); //return a random no. between 1 to 10 away   31
+			var y = Math.floor((Math.random() * 31) + 0); //return a random no. between 1 to 10 home   31
+
+
+		    // First Roll Gets Random Number
+			var x = Math.floor((Math.random() * 31));
+
+			// Second Rolls Options
+			var z = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
+
+			// Remove First Roll's Number from Second Rolls Options
+			var spliced = z.splice(x,1)
+
+			// Second Roll, From Spliced Options
+			var y = z[Math.floor((Math.random() * 30))];
+
+			// Place Both Rolls in an Array
+			var results = [x,y];
+			console.log("Both Rolls")
+			console.log(results)
+
+			// Randomly assign one of the rolls to Home Team
+			var xpick = results[Math.floor((Math.random() * 2))]
+
+			// Get the index of home teams pick
+			var homePickIndex = results.indexOf(xpick);
+			/*  console.log("homePickIndex")
+			console.log(homePickIndex) */
+
+			if (homePickIndex == 0) {
+			var ypick = results[1];
+			} else {
+			var ypick = results[0];
+			}
+
+			console.log("home team")
+			console.log(xpick)
+			console.log("away team")
+			console.log(ypick)
+
+								   
+			document.getElementById("result1").src = allteams[xpick].image; // random team for away           "results1"    images
+			document.getElementById("result2").src = allteams[ypick].image; // random team for home           "results2"    images
+			
+			// !! get jquery to set the value of these two forms with the name data
+  
+			$('#away-team-name').val(allteams[xpick].name);
+			$('#home-team-name').val(allteams[ypick].name);
+  
+  
+			setTimeout(function () {
+			  //your code here...
+			  clearInterval(intrvl);
+  
+			 }, 2000); // time out end  
+  
+			if (y == x) { // Re Roll Home if tie
+				y = Math.floor((Math.random() * 31) + 0);
+			}
+  
+			console.log("Away: " + xpick + " Home: " + ypick);
+			console.log('away team')
+			console.log(allteams[xpick].name)
+			console.log('home team')
+			console.log(allteams[ypick].name)
+		}
+  }); // on click end
+
+
+  </script>
 
 
 <!-- Players can not be the same -->
@@ -526,19 +757,69 @@
 <!-- Over Time Drop Down -->
 <script type="text/javascript">
 	$('.period-scores').change(function() {
-		console.log('Period Changed!')
-		// grab all period score values
-		// x = $(this).val()	
-		// console.log(x)
-		var allScores = $('.period-scores').map((_,el) => el.value).get()
-		console.log(allScores)
+		console.log('Period Score Changed!')
+
+		var awayScore1 = $('#away-period-1').val()
+		var awayScore2 = $('#away-period-2').val()
+		var awayScore3 = $('#away-period-3').val()
+
+		var awayScoreTotal = parseInt(awayScore1) + parseInt(awayScore2) + parseInt(awayScore3)
+		console.log('Away Score totals is currently: ' + awayScoreTotal)
+
+		var homeScore1 = $('#home-period-1').val()
+		var homeScore2 = $('#home-period-2').val()
+		var homeScore3 = $('#home-period-3').val()
+		
+		var homeScoreTotal = parseInt(homeScore1) + parseInt(homeScore2) + parseInt(homeScore3)
+		console.log('Home Score totals is currently: ' + homeScoreTotal)
+
 		// If all scores are 0 toggle OT section
-		if (allScores[0] == 0 && allScores[1] == 0 && allScores[2] == 0 && allScores[3] == 0 && allScores[4] == 0 && allScores[5]) {
+		if (awayScoreTotal == homeScoreTotal) {
 			console.log('OT BABY!')
-			$('#period-pannel-ot-1').toggle();
-		} 
+			$('#period-pannel-ot-1').show();
+		} else {
+			// reset OT scores to 0
+			$('#away-ot-1').val('0');
+			$('#home-ot-1').val('0');
+			$('#period-pannel-ot-1').hide();
+		}
+
 	});
 </script>
+
+
+<!-- Over Time Counter -->
+<script type="text/javascript">
+
+	var allowedOts = 5 // Set number of OT's
+
+	var otState = 1;
+	$('#ot-count-button').click( function(){
+		if (otState >= allowedOts) {
+		otState = 1
+	} else {
+		otState++
+	}
+	if (otState == 1) {
+		$('#ot-count-display').text('');
+		$('#ot-count').val('1');
+	} else {
+			$('#ot-count-display').text(otState);
+			$('#ot-count').val(otState);
+	}
+
+});
+
+</script>
+
+
+<!-- Submit Button -->
+<script type="text/javascript">
+
+	// don't submit if tie
+
+</script>
+
 
 
 {% endblock %}

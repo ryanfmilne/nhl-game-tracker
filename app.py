@@ -27,6 +27,7 @@ class Game(db.Model):
 
 	home_final = db.Column(db.Integer, nullable=False)
 
+	ot_count = db.Column(db.Integer, nullable=False)
 	game_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
 	def __repr__(self):
@@ -76,6 +77,9 @@ def tracker():
 		home_2 = request.form['home-period-2']
 		home_3 = request.form['home-period-3']
 		home_overtime_1 = request.form['home-ot-1']
+
+		ot_countner = request.form['ot-count']
+		ot_counter = int(ot_counter)
 		# Add each period score to create a final variable
 		away_final_score = int(away_1) + int(away_2) + int(away_3) + int(away_overtime_1)
 		home_final_score = int(home_1) + int(home_2) + int(home_3) + int(home_overtime_1)
@@ -98,6 +102,8 @@ def tracker():
 			home_ot_1=home_overtime_1,
 
 			home_final=home_final_score,
+
+			
 
 			)
 		db.session.add(all_games)
