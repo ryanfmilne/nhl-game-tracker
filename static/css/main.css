@@ -7,6 +7,10 @@ body {
     padding-bottom: 0 !important
 }
 
+.visible {
+    visibility: visible;
+}
+
 .hidden {
     display: none;
 }
@@ -153,9 +157,10 @@ div#cancel-game {
 }
 
 #result1, #result2 {
-    display: inline;
+    /* display: inline; */
     width: 38%
 }
+
 
 .select-player {
     background: none;

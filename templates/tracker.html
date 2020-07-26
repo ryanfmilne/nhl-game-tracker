@@ -100,10 +100,10 @@
 					<!-- TEAM ICONS -->
 					<section>
 						<input type="hidden" id="away-team-name" name="away-team-name" value="" required> <!-- Grab Team id from a dictionary -->
-						<img id="result1" src="static/images/nhl_logos/nhl-logo-480x480.png" alt="Away Team">
+						<img id="result1" class="team-logos" src="static/images/nhl_logos/nhl-logo-480x480.png" alt="Away Team">
 						<div id="ranomizer"></div>
 						<input type="hidden" id="home-team-name" name="home-team-name" value="" required> <!-- Grab Team id from a dictionary -->
-						<img id="result2" src="static/images/nhl_logos/nhl-logo-480x480.png" alt="Home Team">				
+						<img id="result2" class="team-logos" src="static/images/nhl_logos/nhl-logo-480x480.png" alt="Home Team">				
 					</section>
 					<!-- TEAM AWAY, HOME -->
 					<section class="flex-container">
@@ -517,10 +517,27 @@
 }); // on click end
 </script> -->
 
-<!-- Team Randomizer 2.0 -->
+<!-- Team Randomizer 2.0 -->  
 <script type="text/javascript"> 
 	// Random Teams Logic
 	$( '#ranomizer' ).click(function() {
+
+
+		// animation (team logos)
+		$(this).addClass('animate__animated animate__pulse').one('webkitAnimationEnd',
+			function() {
+				$(this).removeClass('animate__animated animate__pulse');
+		});
+
+    	$('.team-logos').addClass('animate__animated animate__bounceOut animate__slow').on('webkitAnimationEnd',
+			function() {
+				$('.team-logos').removeClass('animate__animated animate__bounceOut');
+				$('#result1').addClass('animate__animated animate__bounceInLeft visible');
+				$('#result2').addClass('animate__animated animate__bounceInRight visible');
+		});
+		// End animation
+
+
 	var intrvl = setInterval(numbFunction, 10); //repeat function after 1.5 seconds(1500 ms)
 		function numbFunction() {
 			
@@ -706,7 +723,7 @@
 			  //your code here...
 			  clearInterval(intrvl);
   
-			 }, 2000); // time out end  
+			 }, 2000); // How long the die rolls!  
   
 			if (y == x) { // Re Roll Home if tie
 				y = Math.floor((Math.random() * 31) + 0);
