@@ -197,6 +197,11 @@ section.period-pannel {
     display: none;
 }
 
+h3#ot-count-button {
+    font-size: 34px;
+    margin: 15px;
+}
+
 section#spacer {
     min-height: 120px;
 }
