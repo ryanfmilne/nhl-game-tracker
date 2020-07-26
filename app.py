@@ -78,7 +78,7 @@ def tracker():
 		home_3 = request.form['home-period-3']
 		home_overtime_1 = request.form['home-ot-1']
 
-		ot_countner = request.form['ot-count']
+		ot_counter = request.form['ot-count']
 		ot_counter = int(ot_counter)
 		# Add each period score to create a final variable
 		away_final_score = int(away_1) + int(away_2) + int(away_3) + int(away_overtime_1)
@@ -103,7 +103,7 @@ def tracker():
 
 			home_final=home_final_score,
 
-			
+			ot_count=ot_counter
 
 			)
 		db.session.add(all_games)
@@ -117,9 +117,9 @@ def tracker():
 
 # db.create_all()
 
-if __name__ == "__main__":
-	app.run(debug=True)
-
-
 # if __name__ == "__main__":
-# 	app.run(host='0.0.0.0', threaded=True, debug=True)
+# 	app.run(debug=True)
+
+
+if __name__ == "__main__":
+	app.run(host='0.0.0.0', threaded=True, debug=True)

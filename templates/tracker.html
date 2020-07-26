@@ -36,7 +36,7 @@
 							<th>1st</th>
 							<th>2nd</th>
 							<th>3rd</th>
-							<th>OT</th>
+							<th>OT <span>{{ game.ot_count }}</span></th>
 							<th>Final</th>
 		                </tr>
 		                <tr>
@@ -282,7 +282,7 @@
 
 					<section id="period-pannel-ot-1" class="period-pannel"> <!-- OVERTIME 1 -->
 						<h3 id="ot-count-button">OVERTIME <span id="ot-count-display"></span></h3>
-						<input class="hidden" type="text" id="ot-count" name="ot-count" value="1">
+						<input class="hidden" type="number" id="ot-count" name="ot-count" value="1">
 
 						<div class='score-input score-input-away inline-flex'>
 							<div class="score-plus-minus">-</div>
@@ -819,7 +819,7 @@
 	}
 	if (otState == 1) {
 		$('#ot-count-display').text('');
-		$('#ot-count').val('1');
+		$('#ot-count').val('0');
 	} else {
 			$('#ot-count-display').text(otState);
 			$('#ot-count').val(otState);
